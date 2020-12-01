@@ -1,8 +1,8 @@
 import fs from "fs";
 
 export class Day1 {
-    static problemOne(): number {
-        const numbers = fs.readFileSync("src/advent/day1/data/data.txt", "utf8");
+    static problemOne(dataPath: string): number {
+        const numbers = fs.readFileSync(dataPath, "utf8");
         let result = 0;
 
         numbers.toString().split(/\n/).forEach(number1 => {
@@ -16,8 +16,8 @@ export class Day1 {
         return result;
     }
 
-    static problemTwo(): number {
-        const numbers = fs.readFileSync("src/advent/day1/data/data.txt", "utf8");
+    static problemTwo(dataPath: string): number {
+        const numbers = fs.readFileSync(dataPath, "utf8");
         let result = 0;
 
         numbers.toString().split(/\n/).forEach(number1 => {
