@@ -1,34 +1,51 @@
 import fs from "fs";
 
 export class Day1 {
-    static problemOne(dataPath: string): number {
-        const numbers = fs.readFileSync(dataPath, "utf8");
-        let result = 0;
 
-        numbers.toString().split(/\n/).forEach(number1 => {
-            numbers.toString().split(/\n/).forEach(number2 => {
-                if (+number1 + +number2 === 2020) {
-                    result = +number1 * +number2;
-                }
-            });
+    static settingData(callback: (n: number) => void, dataPath: string): void {
+        const numbers = fs.readFileSync(dataPath, "utf8");
+        numbers.toString().split(/\n/).forEach(number => {
+            callback(+number);
         });
+    }
+
+    static problemOne(dataPath: string, coindence: number): number {
+        let result = 0;
+        const pairs = new Map<number, number>();
+
+        this.settingData((number) => {
+            pairs.set(coindence - number, number);
+        }, dataPath);
+
+        this.settingData((number) => {
+            const x = pairs.get(number);
+            if (x && x + number === coindence) {
+                result = x * number;
+            }
+        }, dataPath);
 
         return result;
     }
 
-    static problemTwo(dataPath: string): number {
-        const numbers = fs.readFileSync(dataPath, "utf8");
+    static problemTwo(dataPath: string, coindence: number): number {
         let result = 0;
+        const pairs = new Map<number, number>();
+        const products = new Map<number, number>();
 
-        numbers.toString().split(/\n/).forEach(number1 => {
-            numbers.toString().split(/\n/).forEach(number2 => {
-                numbers.toString().split(/\n/).forEach(number3 => {
-                    if (+number1 + +number2 + +number3 === 2020) {
-                        result = +number1 * +number2 * +number3;
-                    }
-                });
-            });
-        });
+        this.settingData((number1) => {
+            this.settingData((number2) => {
+                pairs.set(coindence - number1 - number2, number1 + number2);
+                products.set(coindence - number1 - number2, number1 * number2);
+            }, dataPath);
+        }, dataPath);
+
+        this.settingData((number) => {
+            const x = pairs.get(number);
+            const productCarry = products.get(number);
+            if (x && productCarry && x + number === coindence) {
+                result = number * productCarry;
+            }
+        }, dataPath);
 
         return result;
     }
