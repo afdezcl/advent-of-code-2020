@@ -46,7 +46,7 @@ export class Day1 {
                 result = number * productCarry;
             }
         }, dataPath);
-
+        
         return result;
     }
 }

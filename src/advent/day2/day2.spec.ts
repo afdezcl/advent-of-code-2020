@@ -3,7 +3,6 @@ import { Day2 } from "./day2";
 describe("Test: Day 2", () => {
 
     const correctDataPath = 'src/advent/day2/data/dataTest.txt';
-    const coincidence = 2020;
 
     describe("First problem", () => {
         it("Should return the value '2' to data.txt file", () => {

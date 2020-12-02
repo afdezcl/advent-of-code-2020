@@ -1,12 +1,11 @@
 import fs from "fs";
 
-export let decodedLine: {
-    minimum: number;
-    maximum: number;
-    letterToFind: string;
-    password: string;
+export const decodedLine = {
+    minimum: 0,
+    maximum: 0,
+    letterToFind: '',
+    password: ''
 };
-
 
 export class Day2 {
 
@@ -17,7 +16,7 @@ export class Day2 {
         });
     }
 
-    static decodeEachLine(line: string) {
+    static decodeEachLine(line: string): void {
         const apparences = line.match(/\b\w+\b/g) as string[];
         decodedLine.minimum = +apparences[0];
         decodedLine.maximum = +apparences[1];
