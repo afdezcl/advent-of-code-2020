@@ -18,8 +18,8 @@ export class Day1 {
         }, dataPath);
 
         this.settingData((number) => {
-            const x = pairs.get(number);
-            if (x && x + number === coindence) {
+            const x = pairs.get(number) as number;
+            if (x + number === coindence) {
                 result = x * number;
             }
         }, dataPath);
@@ -40,9 +40,9 @@ export class Day1 {
         }, dataPath);
 
         this.settingData((number) => {
-            const x = pairs.get(number);
-            const productCarry = products.get(number);
-            if (x && productCarry && x + number === coindence) {
+            const x = pairs.get(number) as number;
+            const productCarry = products.get(number) as number;
+            if (x + number === coindence) {
                 result = number * productCarry;
             }
         }, dataPath);

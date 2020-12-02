@@ -1,8 +1,7 @@
-import { Day1 } from "./advent/day1/day1";
+import { Day2 } from "./advent/day2/day2";
 
 
-const dataPath = 'src/advent/day1/data/data.txt';
-const coincidence = 2020;
+const dataPath = 'src/advent/day2/data/data.txt';
 
-console.log(`Day 1 - First problem: ${Day1.problemOne(dataPath, coincidence)}`);
-console.log(`Day 1 - Second problem: ${Day1.problemTwo(dataPath, coincidence)}`);
+console.log(`Day 2 - First problem: ${Day2.problemOne(dataPath)}`);
+console.log(`Day 2 - Second problem: ${Day2.problemTwo(dataPath)}`);
