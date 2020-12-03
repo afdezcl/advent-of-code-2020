@@ -1,7 +1,7 @@
-import { Day2 } from "./advent/day2/day2";
+import { Day3 } from "./advent/day3/day3";
 
 
-const dataPath = 'src/advent/day2/data/data.txt';
+const dataPath = 'src/advent/day3/data/data.txt';
 
-console.log(`Day 2 - First problem: ${Day2.problemOne(dataPath)}`);
-console.log(`Day 2 - Second problem: ${Day2.problemTwo(dataPath)}`);
+console.log(`Day 3 - First problem: ${Day3.problemOne(dataPath)}`);
+console.log(`Day 3 - Second problem: ${Day3.problemTwo(dataPath)}`);
