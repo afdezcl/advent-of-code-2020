@@ -9,7 +9,7 @@ export interface Passport {
     ecl: string;
     pid: string;
     cid: string;
-};
+}
 
 export class Day4 {
 
@@ -38,6 +38,6 @@ export class Day4 {
     }
 
     static problemTwo(dataPath: string) {
-
+        
     }
 }

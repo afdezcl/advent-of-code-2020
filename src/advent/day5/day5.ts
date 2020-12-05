@@ -1,9 +1,5 @@
 import fs from "fs";
 
-//const rows = Array.from(Array(128).keys());
-const colums = Array.from(Array(8).keys());
-
-
 export class Day5 {
 
     static settingData(callback: (l: string) => void, dataPath: string): void {
@@ -40,25 +36,39 @@ export class Day5 {
     }
 
     static problemOne(dataPath: string): number {        
-        let codedRow: string;
-        let codedColumn: string;
         let columnID = 0;
         let rowID = 0;
         let highestID = 0;
 
-        this.settingData((line) => {            
-            codedRow = line.slice(0,7);
-            codedColumn = line.slice(7, 10);            
-            rowID = this.calculateRow(codedRow);
-            columnID = this.calculateColumn(codedColumn);
+        this.settingData((line) => {                    
+            rowID = this.calculateRow(line.slice(0,7));
+            columnID = this.calculateColumn(line.slice(7, 10));
             if((rowID * 8) + columnID > highestID) {
                 highestID = (rowID * 8) + columnID;
             }        
         }, dataPath);
-        return highestID ;
+        return highestID;
     }
 
-    static problemTwo(dataPath: string) {
+    static problemTwo(dataPath: string): number {
+        let columnID = 0;
+        let rowID = 0;        
+        const seats: number[] = [];
+        let mySeat = 0;
 
+        this.settingData((line) => {                    
+            rowID = this.calculateRow(line.slice(0,7));
+            columnID = this.calculateColumn(line.slice(7, 10));            
+            seats.push((rowID * 8) + columnID);                 
+        }, dataPath);
+        
+        seats.sort((a, b) => a - b);
+
+        for(let i = 0; i < seats.length-1; i++) {
+            if(seats[i] + 1 != seats[i+1]) {
+                mySeat = seats[i] + 1;
+            }
+        }
+        return mySeat;
     }
 }
